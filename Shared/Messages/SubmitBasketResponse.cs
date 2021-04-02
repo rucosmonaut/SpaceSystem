@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable   enable
 
-namespace Shared.Messages
+using System.Xml.Serialization;
+
+using Newtonsoft.Json;
+
+namespace Shared
 {
-    class SubmitBasketResponse
+    [XmlRoot("Message")]
+    public class SubmitBasketResponse : Message
     {
+        [XmlElement("Result")]
+        [JsonProperty("Result")]
+        public Result? Result { get; set; }
+
+        public SubmitBasketResponse()
+        {
+            Type = MessageType.Response;
+            Action = "SubmitBasket";
+        }
     }
 }

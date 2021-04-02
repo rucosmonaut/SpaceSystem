@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable enable
 
-namespace Shared.Messages
+using System.Xml.Serialization;
+
+using Newtonsoft.Json;
+
+namespace Shared
 {
-    class BasketPaidResponse
+
+
+    [XmlRoot("Message")]
+    public class BasketPaidResponse : Message
     {
+
+        [XmlAttribute("posTxnNumber")]
+        public string? POSTransactionNumber { get; set; }
+
+        [XmlElement("Result")]
+        [JsonProperty("Result")]
+        public Result? Result { get; set; }
+
+        public BasketPaidResponse()
+        {
+            Type = MessageType.Response;
+            Action = "BasketPaid";
+        }
     }
 }

@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable   enable
 
-namespace Shared.Messages
+using System.Xml.Serialization;
+
+using Newtonsoft.Json;
+
+namespace Shared
 {
-    class HeartBeatResponseMessage
+    [XmlRoot("Message")]
+    public class HeartBeatResponseMessage : Message
     {
+        [XmlElement("Result")]
+        [JsonProperty("result")]
+        public Result? Result { get; set; }
+
+        public HeartBeatResponseMessage()
+        {
+            Type = MessageType.Response;
+            Action = "HeartBeat";
+        }
     }
 }

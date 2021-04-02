@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Linq;
 
 namespace Shared.Xml
 {
-    class XmlSocketServer
+    public class XmlSocketServer
+        : SocketServer<XmlChannel, XmlMessageProtocol, XDocument, XDocumentMessageDispatcher>
     {
+        public XmlSocketServer(int maxConnections = 100000000)
+            : base(maxConnections) { }
     }
 }

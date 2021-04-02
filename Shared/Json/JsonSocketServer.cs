@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Newtonsoft.Json.Linq;
 
 namespace Shared.Json
 {
-    class JsonSocketServer
+    public class JsonSocketServer
+        : SocketServer<JsonChannel, JsonMessageProtocol, JObject, JsonMessageDispatcher>
     {
+        public JsonSocketServer(int maxConnections = 100000000)
+            : base(maxConnections) { }
     }
 }

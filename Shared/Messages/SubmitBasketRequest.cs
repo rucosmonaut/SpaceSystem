@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable   enable
 
-namespace Shared.Messages
+using System.Xml.Serialization;
+
+using Newtonsoft.Json;
+
+namespace Shared
 {
-    class SubmitBasketRequest
+    [XmlRoot("Message")]
+    public class SubmitBasketRequest : Message
     {
+        [XmlAttribute("posTxnNumber")]
+        public string? POSTransactionNumber { get; set; }
+
+        public SubmitBasketRequest()
+        {
+            Type = MessageType.Request;
+            Action = "SubmitBasket";
+        }
     }
 }

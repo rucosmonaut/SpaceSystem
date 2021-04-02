@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Newtonsoft.Json.Linq;
 
 namespace Shared.Json
 {
-    class JsonChannels
-    {
-    }
+    public class JsonChannel : Channel<JsonMessageProtocol, JObject> { }
+
+    public class JsonClientChannel : ClientChannel<JsonMessageProtocol, JObject> { }
+
 }

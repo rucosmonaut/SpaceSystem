@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable enable
 
-namespace Shared.Messages
+using System.Xml.Serialization;
+
+namespace Shared
 {
-    class PaymentInfo
+    public class PaymentInfo
     {
+        [XmlAttribute("authCode")]
+        public string? AuthorizationCode { get; set; }
+
+        [XmlAttribute("amount")]
+        public decimal Amount { get; set; }
+
+        [XmlAttribute("lastFour")]
+        public string? LastFour { get; set; }
+
     }
 }

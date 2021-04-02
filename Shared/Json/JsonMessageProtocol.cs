@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+
+using Newtonsoft.Json.Linq;
 
 namespace Shared.Json
 {
-    class JsonMessageProtocol
+
+    public class JsonMessageProtocol : Protocol<JObject>
     {
+        protected override JObject Decode(byte[] message)
+            => JsonSerialization.Deserialize(Encoding.UTF8.GetString(message));
+
+        protected override byte[] EncodeBody<T>(T message)
+            => Encoding.UTF8.GetBytes(JsonSerialization.Serialize(message).ToString());
+
     }
 }
